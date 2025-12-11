@@ -10,11 +10,503 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ============================================================
+   🌌 ASTROVISION ANIMATED SKY / STORM / WIND BACKGROUND
+   (Added safely below your original styles)
+   ============================================================ */
+
+.space-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ✅ Clear-sky aurora glow */
+.space-gradient {
+  background: radial-gradient(
+      circle at 10% 0%,
+      rgba(56, 189, 248, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(129, 140, 248, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(64, 64, 128, 0.3),
+      transparent 60%
+    );
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+
+/* ✅ Stormy drifting cloud layer */
+.storm-layer {
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(15, 23, 42, 0.7),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(15, 23, 42, 0.8),
+      transparent 55%
+    );
+  animation: storm-drift 45s linear infinite alternate;
+  opacity: 0.8;
+}
+
+/* ✅ Twinkling star field */
+.star-field {
+  background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.75) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle,
+      rgba(148, 163, 184, 0.7) 1px,
+      transparent 1px
+    );
+  background-size: 180px 180px, 260px 260px;
+  background-position: 0 0, 90px 60px;
+  opacity: 0.5;
+  animation: star-twinkle 12s ease-in-out infinite alternate;
+}
+
+/* ✅ Wind / solar-storm streaks */
+.wind-streaks {
+  background-image: linear-gradient(
+      120deg,
+      rgba(56, 189, 248, 0.12) 0,
+      transparent 55%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 45%,
+      rgba(59, 130, 246, 0.18) 80%,
+      transparent 100%
+    );
+  background-size: 260% 260%;
+  background-position: -80% -80%;
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  animation: wind-sweep 30s linear infinite;
+}
+
+/* =======================
+   🎞️ ANIMATIONS
+   ======================= */
+
+@keyframes storm-drift {
+  0% {
+    transform: translate3d(-10px, 0, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(20px, -10px, 0) scale(1.04);
+  }
+}
+
+@keyframes wind-sweep {
+  0% {
+    background-position: -80% -80%;
+  }
+  100% {
+    background-position: 80% 80%;
+  }
+}
+
+@keyframes star-twinkle {
+  0% {
+    opacity: 0.3;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(1.2);
+  }
+  100% {
+    opacity: 0.5;
+    filter: brightness(1);
+  }
+}
+
+/* ============================================================
+   ☀️ SOLAR STORM & MAGNETIC FIELD BACKGROUND (SPACE WEATHER)
+   ============================================================ */
+
+.solar-storm-bg {
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(251, 146, 60, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(239, 68, 68, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(253, 224, 71, 0.18),
+      transparent 60%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+/* 🔴 Fast erupting solar plasma waves */
+.solar-eruption {
+  background-image: linear-gradient(
+      120deg,
+      rgba(251, 191, 36, 0.25),
+      transparent 60%
+    ),
+    linear-gradient(
+      300deg,
+      rgba(239, 68, 68, 0.25),
+      transparent 60%
+    );
+  background-size: 200% 200%;
+  animation: solar-eject 16s linear infinite;
+  opacity: 0.8;
+}
+
+/* 🧲 Magnetic field lines */
+.magnetic-field {
+  background-image: repeating-radial-gradient(
+    ellipse at center,
+    rgba(56, 189, 248, 0.15) 0px,
+    rgba(56, 189, 248, 0.15) 2px,
+    transparent 4px,
+    transparent 14px
+  );
+  animation: magnetic-pulse 10s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+/* Animations */
+@keyframes solar-eject {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+@keyframes magnetic-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+}
+/* =====================================
+   🌌 Subtle Realistic Star Background
+   ===================================== */
+
+.astro-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 0%, #0f172a, #000 70%);
+}
+
+/* ⭐ Tiny stars */
+.astro-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(200, 200, 200, 0.6) 1px, transparent 1px);
+  background-size: 150px 150px, 250px 250px;
+  opacity: 0.4;
+}
+
+
+/* =====================================
+   ☄️ Clean Falling Meteors (Realistic)
+   ===================================== */
+
+.astro-meteor {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(
+    to left,
+    rgba(255,255,255,1),
+    rgba(200,200,200,0.7),
+    rgba(255,255,255,0)
+  );
+  border-radius: 999px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+  transform: rotate(135deg); /* top-right → bottom-left */
+  opacity: 0;
+  animation: astro-meteor-fall linear infinite;
+  z-index: 1;
+}
+
+/* Three meteors with different timing */
+.astro-meteor-1 {
+  top: -10%;
+  left: 80%;
+  animation-duration: 4s;
+  animation-delay: 0s;
+}
+
+.astro-meteor-2 {
+  top: -15%;
+  left: 70%;
+  animation-duration: 5s;
+  animation-delay: 1.5s;
+}
+
+.astro-meteor-3 {
+  top: -20%;
+  left: 90%;
+  animation-duration: 4.8s;
+  animation-delay: 3s;
+}
+
+@keyframes astro-meteor-fall {
+  0% {
+    transform: translate(0, 0) rotate(135deg);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-120vw, 120vh) rotate(135deg);
+    opacity: 0;
+  }
+}
+/* =====================================
+   🪐 CENTERED REVOLVING GRADIENT PLANET
+   ===================================== */
+
+/* Orbit path around center */
+.astro-orbit {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: orbit-spin 90s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* The actual planet */
+.astro-big-planet {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: inset -50px 0 90px rgba(0,0,0,0.85);
+}
+
+/* 🌍 Gradient colored realistic planet */
+.gradient-planet {
+  background:
+    radial-gradient(circle at 30% 30%, #e0f2fe 0%, #38bdf8 30%, #1e40af 60%, #020617 80%),
+    radial-gradient(circle at 70% 60%, rgba(34,197,94,0.85), transparent 45%);
+  animation: planet-rotate 35s linear infinite;
+  box-shadow:
+    inset -50px 0 90px rgba(0,0,0,0.85),
+    0 0 50px rgba(56,189,248,0.35);
+}
+
+/* Orbit revolution */
+@keyframes orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Surface rotation */
+@keyframes planet-rotate {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
+/* ==========================================================
+   CLEAN, CONTINUOUS, REDUCED FALLING STARS
+   ========================================================== */
+
+.falling-stars-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.fall-star {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0;
+  transform-origin: left center;
+  transform: rotate(135deg);
+  will-change: transform, opacity;
+}
+
+/* Smooth, continuous diagonal drop */
+@keyframes fall-diagonal {
+  0% {
+    opacity: 0;
+    transform: translate(0, -5vh) rotate(135deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-120vw, 120vh) rotate(135deg);
+    opacity: 0;
+  }
+}
+/* ==========================================
+   Floating Bookmark Icons (Cute Animation)
+   ========================================== */
+
+.floating-icons .bookmark-float {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.25;
+  animation: floaty 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-icons .b1 {
+  top: 20%;
+  left: 10%;
+  animation-duration: 12s;
+}
+.floating-icons .b2 {
+  top: 60%;
+  left: 80%;
+  animation-duration: 14s;
+}
+.floating-icons .b3 {
+  top: 40%;
+  left: 50%;
+  animation-duration: 11s;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0px) translateX(0) rotate(0deg); opacity: 0.2; }
+  50% { transform: translateY(-20px) translateX(10px) rotate(10deg); opacity: 0.35; }
+  100% { transform: translateY(0px) translateX(0) rotate(0deg); opacity: 0.2; }
+}
+/* Footer starry background previously in styled-jsx */
+.starry-bg {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2px 2px at 50% 80%, rgba(255,255,255,0.4), transparent);
+  animation: starsMove 25s linear infinite;
+}
+@keyframes starsMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+/* ================================
+   PREMIUM HOME PAGE ANIMATIONS
+   ================================ */
+
+/* 🌌 Slowly drifting nebula clouds */
+.premium-nebula {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(70, 130, 180, 0.12), transparent 60%),
+              radial-gradient(circle at 80% 20%, rgba(147, 112, 219, 0.15), transparent 70%),
+              radial-gradient(circle at 20% 80%, rgba(100, 149, 237, 0.12), transparent 65%);
+  animation: nebula-drift 60s linear infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes nebula-drift {
+  0% { transform: translate3d(0px, 0px, 0); }
+  100% { transform: translate3d(-40px, -20px, 0); }
+}
+
+/* ⭐ Slow parallax star drift */
+.premium-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+      radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.9), transparent),
+      radial-gradient(2px 2px at 70% 80%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 40% 60%, rgba(255,255,255,0.5), transparent);
+  background-size: 400px 400px;
+  opacity: 0.25;
+  animation: premium-stars-move 90s linear infinite;
+  z-index: 0;
+}
+
+@keyframes premium-stars-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-140px); }
+}
+
+/* 🛰 Minimal ISS orbit arc (pure decoration) */
+.premium-orbit {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: orbit-spin-slow 80s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes orbit-spin-slow {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* 🌍 Slight earth glow at bottom */
+.premium-earth-glow {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at center, rgba(0,150,255,0.22), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
 }
